@@ -283,7 +283,7 @@ async def _480(event):
     else:
         await event.edit("Another process in progress!")
         
-@Drone.on(events.callbackquery.CallbackQuery(data="144"))
+@Drone.on(events.callbackquery.CallbackQuery(data="720"))
 async def _720(event):
     button = await event.get_message()
     msg = await button.get_reply_message()  
