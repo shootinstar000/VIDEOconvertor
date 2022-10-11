@@ -283,14 +283,14 @@ async def _480(event):
     else:
         await event.edit("Another process in progress!")
         
-@Drone.on(events.callbackquery.CallbackQuery(data="720"))
-async def _720(event):
+@Drone.on(events.callbackquery.CallbackQuery(data="144"))
+async def _144(event):
     button = await event.get_message()
     msg = await button.get_reply_message()  
     if not os.path.isdir("encodemedia"):
         await event.delete()
         os.mkdir("encodemedia")
-        await encode(event, msg, scale=720)
+        await encode(event, msg, scale=144)
         if os.path.isdir("encodemedia"):
             os.rmdir("encodemedia")
     else:
