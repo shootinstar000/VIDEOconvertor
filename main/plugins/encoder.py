@@ -79,8 +79,8 @@ async def encode(event, msg, scale=0):
         if 854 == wdt:
             os.rmdir("encodemedia")
             return await edit.edit(f"The video is already in {scale}p resolution.")
-    if scale == 720:
-        if 1280 == wdt:
+    if scale == 144:
+        if 256 == wdt:
             os.rmdir("encodemedia")
             return await edit.edit(f"The video is already in {scale}p resolution.")
     FT = time.time()
@@ -92,8 +92,8 @@ async def encode(event, msg, scale=0):
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx264 -pix_fmt yuv420p -preset faster -s 640x360 -crf 24 -c:a libopus -ac 2 -ab 128k -c:s copy """{out}""" -y'
     elif scale == 480:
         cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx264 -pix_fmt yuv420p -preset faster -s 854x480 -crf 24 -c:a libopus -ac 2 -ab 128k -c:s copy """{out}""" -y'
-    elif scale == 720:
-        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx264 -pix_fmt yuv420p -preset faster -s 1280x720 -crf 24 -c:a libopus -ac 2 -ab 128k -c:s copy """{out}""" -y'
+    elif scale == 144:
+        cmd = f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{name}""" -c:v libx264 -pix_fmt yuv420p -preset faster -s 256×144 -crf 24 -c:a libopus -ac 2 -ab 128k -c:s copy """{out}""" -y'
     try:
         await ffmpeg_progress(cmd, name, progress, FT, edit, '**ENCODING:**')
     except Exception as e:
